@@ -1,5 +1,5 @@
 {
-  "name": "@rotorjs/react-base",
+  "name": "@rotorjs/react-tiles",
   "version": "0.0.0",
   "description": "Rotor",
   "author": {
@@ -7,10 +7,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rotorjs/react-base.git"
+    "url": "git+https://github.com/rotorjs/react-tiles.git"
   },
   "bugs": {
-    "url": "https://github.com/rotorjs/react-base/issues"
+    "url": "https://github.com/rotorjs/react-tiles/issues"
   },
   "homepage": "https://github.com/rotorjs/",
   "type": "module",

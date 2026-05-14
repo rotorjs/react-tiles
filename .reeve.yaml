@@ -1,6 +1,6 @@
 ---
 type: pipeline
-name: publish @rotorjs/react-base
+name: publish @rotorjs/react-tiles
 
 when:
   workerGroup:
@@ -8,7 +8,7 @@ when:
   trigger:
     include: [tag, action]
   action:
-    include: [packages:@rotorjs/react-base:publish]
+    include: [packages:@rotorjs/react-tiles:publish]
 
 steps:
   - name: publish
