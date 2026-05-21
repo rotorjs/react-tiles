@@ -22,13 +22,20 @@
   "files": [
     "dist"
   ],
-  "main": "./dist/main.js",
-  "types": "./dist/main.d.ts",
+  "types": "./dist/types/main.d.ts",
+  "main": "./dist/esm/main.js",
   "exports": {
     ".": {
       "import": {
-        "types": "./dist/main.d.ts",
-        "default": "./dist/main.js"
+        "types": "./dist/types/main.d.ts",
+        "default": "./dist/esm/main.js"
+      }
+    },
+    "./main": null,
+    "./*": {
+      "import": {
+        "types": "./dist/types/*",
+        "default": "./dist/esm/*"
       }
     }
   },
@@ -44,8 +51,10 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@rotorjs/dashboard": "^0.2.0",
     "@rotorjs/react": "^0.8.0",
-    "@types/react": "^19.1.12",
+    "@types/node": "^25.9.1",
+    "@types/react": "^19.2.15",
     "@types/react-dom": "^19.1.9",
     "@vitejs/plugin-react": "^6.0.2",
     "eslint": "^10.4.0",
@@ -62,10 +71,16 @@
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.59.4",
     "unplugin-dts": "^1.0.1",
-    "vite": "^8.0.13"
+    "vite": "^8.0.14"
   },
   "peerDependencies": {
+    "@rotorjs/dashboard": "^0.2.0",
     "@rotorjs/react": "^0.8.0",
     "react": "^19.0.0"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1"
   }
 }
