@@ -1,7 +1,11 @@
 import type { GridLayoutConfig } from '@/layouts/GridLayout';
+import type { StackLayoutConfig } from '@/layouts/StackLayout';
 import { layouts, tiles } from '@/presets';
+import type { GridTileNode } from '@/tiles/GridTile';
+import type { MarkdownTileNode } from '@/tiles/MarkdownTile';
 import type { SkeletonTileNode } from '@/tiles/SkeletonTile';
 import type { SpaceTileNode } from '@/tiles/SpaceTile';
+import type { StackTileNode } from '@/tiles/StackTile';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
@@ -32,34 +36,61 @@ const layout: DashboardLayoutNode = {
     width: '100%',
     height: '100%',
     gridTemplate: 'unset',
-    gridAutoColumns: '1fr',
-    gridAutoRows: 'minmax(150px, auto)',
-    gridTemplateAreas: `
-      "headline headline ."
-      "headline headline ."
-    `,
+    gridTemplateColumns: 'repeat(4, 1fr)',
   },
 };
 
 const content: DashboardTileNode[] = [
   {
-    type: 'skeleton',
+    type: 'grid',
     layout: {
-      appearance: 'outline',
-      style: { gridArea: 'headline' },
+      style: {
+        gridTemplateColumns: 'repeat(2, 1fr)',
+        gridAutoRows: 'minmax(30px, auto)',
+      },
     },
+    content: [
+      { type: 'space', layout: { appearance: 'outline' } },
+      { type: 'space', layout: { appearance: 'outline' } },
+    ],
+  } satisfies GridTileNode<GridLayoutConfig>,
+  {
+    type: 'markdown',
+    content: '# Title\nSection',
+  } satisfies MarkdownTileNode<GridLayoutConfig>,
+  {
+    type: 'skeleton',
+    style: { minHeight: '20px' },
   } satisfies SkeletonTileNode<GridLayoutConfig>,
   {
     type: 'space',
-    loading: true,
+    style: { minHeight: '20px' },
   } satisfies SpaceTileNode<GridLayoutConfig>,
   {
-    type: 'skeleton',
-    layout: { appearance: 'card' },
-    variant: 'circular',
-    style: { height: 160, background: 'red' },
-  } satisfies SkeletonTileNode<GridLayoutConfig>,
-];
+    type: 'stack',
+    layout: { style: { flexDirection: 'column', justifyContent: 'stretch' } },
+    content: [
+      {
+        type: 'space',
+        layout: { appearance: 'outline' },
+        style: { flex: 1 },
+      } satisfies SpaceTileNode<StackLayoutConfig>,
+      {
+        type: 'space',
+        layout: { appearance: 'outline' },
+      } satisfies SpaceTileNode<StackLayoutConfig>,
+    ],
+  } satisfies StackTileNode<GridLayoutConfig>,
+].flatMap((element) => [
+  { ...element, loading: true },
+  element,
+  {
+    ...element,
+    layout: { ...element.layout, appearance: 'card' },
+    loading: true,
+  },
+  { ...element, layout: { ...element.layout, appearance: 'card' } },
+]);
 
 export default function App() {
   return (

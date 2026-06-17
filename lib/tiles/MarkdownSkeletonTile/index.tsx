@@ -13,6 +13,13 @@ export default function MarkdownSkeletonTile({
   className,
   style,
 }: MarkdownSkeletonTileNode) {
-  // TODO:
-  return <SkeletonTile {...{ type, id, layout, className, style }} />;
+  return (
+    <SkeletonTile
+      type={type}
+      id={id}
+      layout={layout}
+      className={className}
+      style={style}
+    />
+  );
 }

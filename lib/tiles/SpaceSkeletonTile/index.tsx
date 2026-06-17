@@ -1,4 +1,3 @@
-import { sxx } from '@/sxx';
 import SkeletonTile from '@/tiles/SkeletonTile';
 import type { SpaceTileNode } from '@/tiles/SpaceTile';
 import type { DashboardLayoutConfig } from '@rotorjs/dashboard';
@@ -14,15 +13,13 @@ export default function SpaceSkeletonTile({
   className,
   style,
 }: SpaceSkeletonTileNode) {
-  // TODO:
   return (
     <SkeletonTile
       type={type}
       id={id}
       layout={layout}
       className={className}
-      style={sxx({ width: '100%', height: '100%' }, style)}
-      variant="rounded"
+      style={style}
     />
   );
 }

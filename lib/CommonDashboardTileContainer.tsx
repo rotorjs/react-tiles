@@ -16,24 +16,19 @@ export function CommonDashboardTileContainer({
 }) {
   const { appearance } = (layout ?? {}) as CommonDashboardLayoutConfig;
 
-  switch (appearance) {
-    case 'card':
-    case 'outline':
-      return (
-        <DashboardTileContainer layout={layout}>
-          {(layoutProps) => (
-            <Container {...layoutProps} appearance={appearance}>
-              {children({})}
-            </Container>
-          )}
-        </DashboardTileContainer>
-      );
-
-    default:
-      return (
-        <DashboardTileContainer layout={layout}>
-          {children}
-        </DashboardTileContainer>
-      );
+  if (appearance) {
+    return (
+      <DashboardTileContainer layout={layout}>
+        {(layoutProps) => (
+          <Container {...layoutProps} appearance={appearance}>
+            {children({})}
+          </Container>
+        )}
+      </DashboardTileContainer>
+    );
   }
+
+  return (
+    <DashboardTileContainer layout={layout}>{children}</DashboardTileContainer>
+  );
 }
