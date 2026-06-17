@@ -32,3 +32,4 @@ export default function Outline({
     </Paper>
   );
 }
+Outline.displayName = 'Outline';

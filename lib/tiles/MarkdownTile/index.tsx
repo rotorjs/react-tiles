@@ -1,11 +1,9 @@
 import type { CommonDashboardLayoutConfig } from '@/CommonDashboardLayoutConfig';
+import { CommonDashboardTileContainer } from '@/CommonDashboardTileContainer';
 import type { CommonDashboardTileNode } from '@/CommonDashboardTileNode';
-import Container from '@/components/Container';
 import Markdown from '@/components/Markdown';
 import MarkdownSkeletonTile from '@/tiles/MarkdownSkeletonTile';
 import type { DashboardLayoutConfig } from '@rotorjs/dashboard';
-import { DashboardTileContainer } from '@rotorjs/react';
-import { clsx } from 'clsx';
 
 export type MarkdownTileNode<
   Layout extends DashboardLayoutConfig = DashboardLayoutConfig,
@@ -22,17 +20,14 @@ export default function MarkdownTile(props: MarkdownTileNode) {
   }
 
   return (
-    <DashboardTileContainer layout={layout}>
-      {(layoutProps) => (
-        <Container
-          className={clsx(layoutProps.className, className)}
-          style={layoutProps.style}
-          sx={style}
-          appearance={layout?.appearance}
-        >
-          <Markdown content={content} />
-        </Container>
-      )}
-    </DashboardTileContainer>
+    <CommonDashboardTileContainer
+      className={className}
+      sx={style}
+      layout={layout}
+      defaultAppearance="space"
+    >
+      <Markdown content={content} />
+    </CommonDashboardTileContainer>
   );
 }
+MarkdownTile.displayName = 'MarkdownTile';

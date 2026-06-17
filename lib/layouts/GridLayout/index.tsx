@@ -41,3 +41,4 @@ export default function GridLayout({
     </DashboardLayoutContext.Provider>
   );
 }
+GridLayout.displayName = 'GridLayout';

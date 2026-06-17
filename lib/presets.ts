@@ -9,6 +9,7 @@ import type { DashboardLayoutMap, DashboardTileMap } from '@rotorjs/react';
 import type { ComponentType } from 'react';
 import MarkdownTile from './tiles/MarkdownTile';
 import SpaceTile from './tiles/SpaceTile';
+import TextTile from './tiles/TextTile';
 
 type Layouts = DashboardLayoutMap &
   Record<string, ComponentType<CommonDashboardLayoutProps>>;
@@ -31,4 +32,5 @@ export const tiles = {
   markdown: MarkdownTile,
   skeleton: SkeletonTile,
   space: SpaceTile,
+  text: TextTile,
 } satisfies Tiles;

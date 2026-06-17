@@ -6,6 +6,7 @@ import type { MarkdownTileNode } from '@/tiles/MarkdownTile';
 import type { SkeletonTileNode } from '@/tiles/SkeletonTile';
 import type { SpaceTileNode } from '@/tiles/SpaceTile';
 import type { StackTileNode } from '@/tiles/StackTile';
+import type { TextTileNode } from '@/tiles/TextTile';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
@@ -35,19 +36,18 @@ const layout: DashboardLayoutNode = {
   style: {
     width: '100%',
     height: '100%',
-    gridTemplate: 'unset',
+    grid: 'unset',
     gridTemplateColumns: 'repeat(4, 1fr)',
+    // alignItems: 'start',
   },
 };
 
 const content: DashboardTileNode[] = [
   {
     type: 'grid',
-    layout: {
-      style: {
-        gridTemplateColumns: 'repeat(2, 1fr)',
-        gridAutoRows: 'minmax(30px, auto)',
-      },
+    style: {
+      gridTemplateColumns: 'repeat(2, 1fr)',
+      gridAutoRows: 'minmax(30px, auto)',
     },
     content: [
       { type: 'space', layout: { appearance: 'outline' } },
@@ -81,6 +81,12 @@ const content: DashboardTileNode[] = [
       } satisfies SpaceTileNode<StackLayoutConfig>,
     ],
   } satisfies StackTileNode<GridLayoutConfig>,
+  {
+    type: 'text',
+    style: { placeSelf: 'center stretch', textAlign: 'center' },
+    content: 'This is text',
+    variant: 'body2',
+  } satisfies TextTileNode<GridLayoutConfig>,
 ].flatMap((element) => [
   { ...element, loading: true },
   element,

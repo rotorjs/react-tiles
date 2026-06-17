@@ -39,3 +39,4 @@ export default function StackLayout({
     </DashboardLayoutContext.Provider>
   );
 }
+StackLayout.displayName = 'StackLayout';

@@ -31,3 +31,4 @@ export default function Card({
     </Paper>
   );
 }
+Card.displayName = 'Card';

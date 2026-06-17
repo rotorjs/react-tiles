@@ -21,3 +21,4 @@ export default function Markdown({ content }: MarkdownProps) {
     </ReactMarkdown>
   );
 }
+Markdown.displayName = 'Markdown';

@@ -1,10 +1,8 @@
 import type { CommonDashboardLayoutConfig } from '@/CommonDashboardLayoutConfig';
+import { CommonDashboardTileContainer } from '@/CommonDashboardTileContainer';
 import type { CommonDashboardTileNode } from '@/CommonDashboardTileNode';
-import Container from '@/components/Container';
 import SpaceSkeletonTile from '@/tiles/SpaceSkeletonTile';
 import type { DashboardLayoutConfig } from '@rotorjs/dashboard';
-import { DashboardTileContainer } from '@rotorjs/react';
-import { clsx } from 'clsx';
 
 export type SpaceTileNode<
   Layout extends DashboardLayoutConfig = DashboardLayoutConfig,
@@ -19,15 +17,12 @@ export default function SpaceTile(props: SpaceTileNode) {
   }
 
   return (
-    <DashboardTileContainer layout={layout}>
-      {(layoutProps) => (
-        <Container
-          className={clsx(layoutProps.className, className)}
-          style={layoutProps.style}
-          sx={style}
-          appearance={layout?.appearance}
-        />
-      )}
-    </DashboardTileContainer>
+    <CommonDashboardTileContainer
+      className={className}
+      sx={style}
+      layout={layout}
+      defaultAppearance="space"
+    />
   );
 }
+SpaceTile.displayName = 'SpaceTile';

@@ -50,6 +50,7 @@ export default function Container({
         </Outline>
       );
 
+    case 'space':
     default:
       return (
         <Box
@@ -64,3 +65,4 @@ export default function Container({
       );
   }
 }
+Container.displayName = 'Container';

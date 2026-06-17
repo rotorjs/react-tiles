@@ -30,3 +30,4 @@ export default function Skeleton({
     />
   );
 }
+Skeleton.displayName = 'Skeleton';
