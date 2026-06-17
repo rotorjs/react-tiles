@@ -1,9 +1,18 @@
-import type { MarkdownTileNode } from '../MarkdownTile';
-import { SkeletonTile } from '../SkeletonTile';
+import type { MarkdownTileNode } from '@/tiles/MarkdownTile';
+import SkeletonTile from '@/tiles/SkeletonTile';
+import type { DashboardLayoutConfig } from '@rotorjs/dashboard';
 
-export type MarkdownSkeletonTileNode = MarkdownTileNode;
+export type MarkdownSkeletonTileNode<
+  Layout extends DashboardLayoutConfig = DashboardLayoutConfig,
+> = MarkdownTileNode<Layout>;
 
-export function MarkdownSkeletonTile(props: MarkdownSkeletonTileNode) {
+export default function MarkdownSkeletonTile({
+  type,
+  id,
+  layout,
+  className,
+  style,
+}: MarkdownSkeletonTileNode) {
   // TODO:
-  return <SkeletonTile {...props} />;
+  return <SkeletonTile {...{ type, id, layout, className, style }} />;
 }

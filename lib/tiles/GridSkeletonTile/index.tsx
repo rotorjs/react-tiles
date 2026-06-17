@@ -1,9 +1,18 @@
-import type { GridTileNode } from '../GridTile';
-import { SkeletonTile } from '../SkeletonTile';
+import type { GridTileNode } from '@/tiles/GridTile';
+import SkeletonTile from '@/tiles/SkeletonTile';
+import type { DashboardLayoutConfig } from '@rotorjs/dashboard';
 
-export type GridSkeletonTileNode = GridTileNode;
+export type GridSkeletonTileNode<
+  Layout extends DashboardLayoutConfig = DashboardLayoutConfig,
+> = GridTileNode<Layout>;
 
-export function GridSkeletonTile(props: GridSkeletonTileNode) {
+export default function GridSkeletonTile({
+  type,
+  id,
+  layout,
+  className,
+  style,
+}: GridSkeletonTileNode) {
   // TODO:
-  return <SkeletonTile {...props} />;
+  return <SkeletonTile {...{ type, id, layout, className, style }} />;
 }

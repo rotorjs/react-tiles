@@ -1,11 +1,13 @@
+import type { SxProps, Theme } from '@mui/material/styles';
 import type { DashboardLayoutConfig } from '@rotorjs/dashboard';
-import type { CSSProperties } from 'react';
 
-export type CommonDashboardTileNode = {
+export type CommonDashboardTileNode<
+  Layout extends DashboardLayoutConfig = DashboardLayoutConfig,
+> = {
   type: string;
   id?: string;
-  layout?: DashboardLayoutConfig;
+  layout?: Layout;
   className?: string;
-  style?: CSSProperties;
+  style?: SxProps<Theme>;
   loading?: boolean;
 };

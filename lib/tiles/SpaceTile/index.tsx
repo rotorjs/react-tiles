@@ -1,24 +1,21 @@
 import type { CommonDashboardLayoutConfig } from '@/CommonDashboardLayoutConfig';
 import type { CommonDashboardTileNode } from '@/CommonDashboardTileNode';
 import Container from '@/components/Container';
-import Markdown from '@/components/Markdown';
-import MarkdownSkeletonTile from '@/tiles/MarkdownSkeletonTile';
+import SpaceSkeletonTile from '@/tiles/SpaceSkeletonTile';
 import type { DashboardLayoutConfig } from '@rotorjs/dashboard';
 import { DashboardTileContainer } from '@rotorjs/react';
 import { clsx } from 'clsx';
 
-export type MarkdownTileNode<
+export type SpaceTileNode<
   Layout extends DashboardLayoutConfig = DashboardLayoutConfig,
-> = CommonDashboardTileNode<Layout> & {
-  content?: string;
-};
+> = CommonDashboardTileNode<Layout>;
 
-export default function MarkdownTile(props: MarkdownTileNode) {
-  const { layout, className, style, loading, content } =
-    props as MarkdownTileNode<CommonDashboardLayoutConfig>;
+export default function SpaceTile(props: SpaceTileNode) {
+  const { layout, className, style, loading } =
+    props as SpaceTileNode<CommonDashboardLayoutConfig>;
 
   if (loading) {
-    return <MarkdownSkeletonTile {...props} />;
+    return <SpaceSkeletonTile {...props} />;
   }
 
   return (
@@ -29,9 +26,7 @@ export default function MarkdownTile(props: MarkdownTileNode) {
           style={layoutProps.style}
           sx={style}
           appearance={layout?.appearance}
-        >
-          <Markdown content={content} />
-        </Container>
+        />
       )}
     </DashboardTileContainer>
   );

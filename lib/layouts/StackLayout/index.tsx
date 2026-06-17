@@ -1,11 +1,16 @@
+import type { CommonDashboardLayoutConfig } from '@/CommonDashboardLayoutConfig';
 import type { CommonDashboardLayoutNode } from '@/CommonDashboardLayoutNode';
+import { sxx } from '@/sxx';
+import Box from '@mui/material/Box';
 import { DashboardLayoutContext } from '@rotorjs/react';
 import { useMemo, type PropsWithChildren } from 'react';
 import { StackTileContainer } from './StackTileContainer';
 
 export type StackLayoutNode = CommonDashboardLayoutNode;
 
-export function StackLayout({
+export type StackLayoutConfig = CommonDashboardLayoutConfig;
+
+export default function StackLayout({
   type,
   className,
   style,
@@ -16,12 +21,21 @@ export function StackLayout({
     [type],
   );
 
-  // TODO:
   return (
     <DashboardLayoutContext.Provider value={context}>
-      <div className={className} style={style}>
+      <Box
+        className={className}
+        sx={sxx(
+          {
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 2,
+          },
+          style,
+        )}
+      >
         {children}
-      </div>
+      </Box>
     </DashboardLayoutContext.Provider>
   );
 }

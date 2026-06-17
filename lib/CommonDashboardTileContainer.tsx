@@ -1,28 +1,39 @@
-import {
-  DashboardTileContainer,
-  type DashboardTileContainerProps,
-} from '@rotorjs/react';
-import { clsx } from 'clsx';
-import type { CSSProperties } from 'react';
+import type { DashboardLayoutConfig } from '@rotorjs/dashboard';
+import { DashboardTileContainer } from '@rotorjs/react';
+import type { CSSProperties, ReactNode } from 'react';
+import type { CommonDashboardLayoutConfig } from './CommonDashboardLayoutConfig';
+import Container from './components/Container';
 
 export function CommonDashboardTileContainer({
   layout,
-  className: tileClassName,
-  style: tileStyle,
   children,
-}: DashboardTileContainerProps & {
-  className?: string;
-  style?: CSSProperties;
+}: {
+  layout?: DashboardLayoutConfig;
+  children: (layoutProps: {
+    className?: string;
+    style?: CSSProperties;
+  }) => ReactNode;
 }) {
-  return (
-    <DashboardTileContainer layout={layout}>
-      {({ className: layoutClassName, style: layoutStyle, ...rest }) =>
-        children({
-          className: clsx(layoutClassName, tileClassName),
-          style: { ...layoutStyle, ...tileStyle },
-          ...rest,
-        })
-      }
-    </DashboardTileContainer>
-  );
+  const { appearance } = (layout ?? {}) as CommonDashboardLayoutConfig;
+
+  switch (appearance) {
+    case 'card':
+    case 'outline':
+      return (
+        <DashboardTileContainer layout={layout}>
+          {(layoutProps) => (
+            <Container {...layoutProps} appearance={appearance}>
+              {children({})}
+            </Container>
+          )}
+        </DashboardTileContainer>
+      );
+
+    default:
+      return (
+        <DashboardTileContainer layout={layout}>
+          {children}
+        </DashboardTileContainer>
+      );
+  }
 }

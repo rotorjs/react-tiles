@@ -1,9 +1,18 @@
-import { SkeletonTile } from '../SkeletonTile';
-import type { StackTileNode } from '../StackTile';
+import SkeletonTile from '@/tiles/SkeletonTile';
+import type { StackTileNode } from '@/tiles/StackTile';
+import type { DashboardLayoutConfig } from '@rotorjs/dashboard';
 
-export type StackSkeletonTileNode = StackTileNode;
+export type StackSkeletonTileNode<
+  Layout extends DashboardLayoutConfig = DashboardLayoutConfig,
+> = StackTileNode<Layout>;
 
-export function StackSkeletonTile(props: StackSkeletonTileNode) {
+export default function StackSkeletonTile({
+  type,
+  id,
+  layout,
+  className,
+  style,
+}: StackSkeletonTileNode) {
   // TODO:
-  return <SkeletonTile {...props} />;
+  return <SkeletonTile {...{ type, id, layout, className, style }} />;
 }
