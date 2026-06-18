@@ -2,6 +2,7 @@ import type { CommonDashboardLayoutConfig } from '@/CommonDashboardLayoutConfig'
 import { CommonDashboardTileContainer } from '@/CommonDashboardTileContainer';
 import type { CommonDashboardTileNode } from '@/CommonDashboardTileNode';
 import Markdown from '@/components/Markdown';
+import { sxx } from '@/sxx';
 import MarkdownSkeletonTile from '@/tiles/MarkdownSkeletonTile';
 import type { DashboardLayoutConfig } from '@rotorjs/dashboard';
 
@@ -22,7 +23,7 @@ export default function MarkdownTile(props: MarkdownTileNode) {
   return (
     <CommonDashboardTileContainer
       className={className}
-      sx={style}
+      sx={sxx({ display: 'block', overflow: 'auto' }, style)}
       layout={layout}
       defaultAppearance="space"
     >

@@ -1,6 +1,7 @@
 import type { CommonDashboardLayoutConfig } from '@/CommonDashboardLayoutConfig';
 import { CommonDashboardTileContainer } from '@/CommonDashboardTileContainer';
 import type { CommonDashboardTileNode } from '@/CommonDashboardTileNode';
+import { sxx } from '@/sxx';
 import SpaceSkeletonTile from '@/tiles/SpaceSkeletonTile';
 import type { DashboardLayoutConfig } from '@rotorjs/dashboard';
 
@@ -19,7 +20,7 @@ export default function SpaceTile(props: SpaceTileNode) {
   return (
     <CommonDashboardTileContainer
       className={className}
-      sx={style}
+      sx={sxx({ display: 'block' }, style)}
       layout={layout}
       defaultAppearance="space"
     />

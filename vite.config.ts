@@ -33,9 +33,9 @@ export default defineConfig({
     lib: {
       entry: {
         'esm/main': 'lib/main',
-        'esm/presets': 'lib/presets',
         ...createEntrypoints('components', 'esm'),
         ...createEntrypoints('layouts', 'esm'),
+        ...createEntrypoints('presets', 'esm'),
         ...createEntrypoints('tiles', 'esm'),
       },
       formats: ['es'],

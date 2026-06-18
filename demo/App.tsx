@@ -1,7 +1,8 @@
 import type { CommonDashboardLayoutConfig } from '@/CommonDashboardLayoutConfig';
 import type { GridLayoutConfig } from '@/layouts/GridLayout';
 import type { StackLayoutConfig } from '@/layouts/StackLayout';
-import { layouts, tiles } from '@/presets';
+import layouts from '@/presets/layouts';
+import tiles from '@/presets/tiles';
 import type { DividerTileNode } from '@/tiles/DividerTile';
 import type { GridTileNode } from '@/tiles/GridTile';
 import type { MarkdownTileNode } from '@/tiles/MarkdownTile';
@@ -67,6 +68,7 @@ const content: DashboardTileNode[] = [
   } satisfies GridTileNode<GridLayoutConfig>,
   {
     type: 'markdown',
+    style: { overflow: 'auto' },
     content: `
 # Title
 
@@ -82,7 +84,7 @@ Section
 Inline \`code\`
 
 \`\`\`ts
-Block level code
+const t: string = "Block level code";
 \`\`\`
 
 - unordered

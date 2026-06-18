@@ -1,22 +1,37 @@
-import Divider, { type DividerProps } from '@/components/Divider';
-import Typography, { type TypographyProps } from '@/components/Typography';
-import { sxx } from '@/sxx';
-import Box from '@mui/material/Box';
-import Table, { type TableProps } from '@mui/material/Table';
-import TableBody, { type TableBodyProps } from '@mui/material/TableBody';
-import TableCell, { type TableCellProps } from '@mui/material/TableCell';
-import TableFooter, { type TableFooterProps } from '@mui/material/TableFooter';
-import TableHead, { type TableHeadProps } from '@mui/material/TableHead';
-import TableRow, { type TableRowProps } from '@mui/material/TableRow';
-import type { ElementType } from 'react';
+import Divider from '@/components/Divider';
+import Typography from '@/components/Typography';
+import { useMemo, type ComponentProps, type ElementType } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import { Blockquote } from './components/Blockquote';
+import { Code } from './components/Code';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableFooter,
+  TableHead,
+  TableRow,
+} from './components/Table';
+import type { MdProps } from './MdProps';
 
 export type MarkdownProps = {
+  components?: ComponentProps<typeof ReactMarkdown>['components'];
   content?: string;
 };
 
-export default function Markdown({ content }: MarkdownProps) {
+export default function Markdown({
+  components: customComponents,
+  content,
+}: MarkdownProps) {
+  const components = useMemo(
+    () =>
+      customComponents
+        ? { ...defaultComponents, ...customComponents }
+        : defaultComponents,
+    [customComponents],
+  );
+
   return (
     <ReactMarkdown
       remarkPlugins={remarkPlugins}
@@ -33,82 +48,53 @@ const remarkPlugins = [remarkGfm];
 
 // https://github.com/HPouyanmehr/mui-markdown/blob/main/package/src/core/utilities/helpers/overrides/index.ts
 
-type MdProps<P> = { node: unknown } & P;
-
-const components: Record<string, ElementType> = {
+const defaultComponents: Record<string, ElementType> = {
   // a: TODO:,
-  blockquote: ({ node: _, sx, ...props }) => (
-    <Typography
-      {...props}
-      component="blockquote"
-      dir="auto"
-      sx={sxx(
-        {
-          borderInlineStart: '3px solid',
-          paddingInlineStart: '1.5rem',
-          borderColor: 'text.secondary',
-          m: '0.25rem 0',
-        },
-        sx,
-      )}
-    />
-  ),
-  // code: TODO:,
-  h1: ({ node: _, ...props }: MdProps<TypographyProps>) => (
+  blockquote: Blockquote,
+  code: Code,
+  h1: ({ node: _, ...props }: MdProps<ComponentProps<'h1'>>) => (
     <Typography {...props} variant="h1" />
   ),
-  h2: ({ node: _, ...props }: MdProps<TypographyProps>) => (
+  h2: ({ node: _, ...props }: MdProps<ComponentProps<'h2'>>) => (
     <Typography {...props} variant="h2" />
   ),
-  h3: ({ node: _, ...props }: MdProps<TypographyProps>) => (
+  h3: ({ node: _, ...props }: MdProps<ComponentProps<'h3'>>) => (
     <Typography {...props} variant="h3" />
   ),
-  h4: ({ node: _, ...props }: MdProps<TypographyProps>) => (
+  h4: ({ node: _, ...props }: MdProps<ComponentProps<'h4'>>) => (
     <Typography {...props} variant="h4" />
   ),
-  h5: ({ node: _, ...props }: MdProps<TypographyProps>) => (
+  h5: ({ node: _, ...props }: MdProps<ComponentProps<'h5'>>) => (
     <Typography {...props} variant="h5" />
   ),
-  h6: ({ node: _, ...props }: MdProps<TypographyProps>) => (
+  h6: ({ node: _, ...props }: MdProps<ComponentProps<'h6'>>) => (
     <Typography {...props} variant="h6" />
   ),
-  hr: ({ node: _, ...props }: MdProps<DividerProps>) => <Divider {...props} />,
-  ol: ({ node: _, ...props }: MdProps<TypographyProps>) => (
+  hr: ({ node: _, ...props }: MdProps<ComponentProps<'hr'>>) => (
+    <Divider {...props} />
+  ),
+  ol: ({ node: _, ...props }: MdProps<ComponentProps<'ol'>>) => (
     <Typography {...props} component="ol" />
   ),
-  p: ({ node: _, ...props }: MdProps<TypographyProps>) => (
+  p: ({ node: _, ...props }: MdProps<ComponentProps<'p'>>) => (
     <Typography {...props} />
   ),
-  // pre: TODO:,
-  span: ({ node: _, ...props }: MdProps<TypographyProps>) => (
+  pre: ({ node: _, children, ...props }: MdProps<ComponentProps<'pre'>>) => (
+    <Typography {...props} component="pre" sx={{ whiteSpace: 'pre-wrap' }}>
+      {children}
+    </Typography>
+  ),
+  span: ({ node: _, ...props }: MdProps<ComponentProps<'span'>>) => (
     <Typography {...props} component="span" />
   ),
-  table: ({ node: _, sx, ...props }: MdProps<TableProps>) => (
-    <Box sx={sxx({ overflow: 'auto' }, sx)}>
-      <Box sx={{ width: '100%', display: 'table', tableLayout: 'fixed' }}>
-        <Table {...props} />
-      </Box>
-    </Box>
-  ),
-  tbody: ({ node: _, ...props }: MdProps<TableBodyProps>) => (
-    <TableBody {...props} />
-  ),
-  td: ({ node: _, sx, ...props }: MdProps<TableCellProps>) => (
-    <TableCell {...props} sx={sxx({ whiteSpace: 'nowrap' }, sx)} />
-  ),
-  tfoot: ({ node: _, ...props }: MdProps<TableFooterProps>) => (
-    <TableFooter {...props} />
-  ),
-  th: ({ node: _, sx, ...props }: MdProps<TableCellProps>) => (
-    <TableCell {...props} sx={sxx({ whiteSpace: 'nowrap' }, sx)} />
-  ),
-  thead: ({ node: _, ...props }: MdProps<TableHeadProps>) => (
-    <TableHead {...props} />
-  ),
-  tr: ({ node: _, ...props }: MdProps<TableRowProps>) => (
-    <TableRow {...props} />
-  ),
-  ul: ({ node: _, ...props }: MdProps<TypographyProps>) => (
+  table: Table,
+  tbody: TableBody,
+  td: TableCell,
+  tfoot: TableFooter,
+  th: TableCell,
+  thead: TableHead,
+  tr: TableRow,
+  ul: ({ node: _, ...props }: MdProps<ComponentProps<'ul'>>) => (
     <Typography {...props} component="ul" />
   ),
 };
