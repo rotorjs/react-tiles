@@ -93,10 +93,10 @@ const t: string = "Block level code";
 1. ordered
 2. list
 
-| A  | B  | C  |
-| -- | -- | -- |
-| 1  | 2  | 3  |
-| 4  | 5  | 6  |
+| A  |  B  |  C |
+| :- | :-: | -: |
+| 1  |  2  |  3 |
+| 4  |  5  |  6 |
 `,
   } satisfies MarkdownTileNode<GridLayoutConfig>,
   {

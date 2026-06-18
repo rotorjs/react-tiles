@@ -13,9 +13,10 @@ export function Blockquote({
       dir="auto"
       sx={{
         borderInlineStart: '3px solid',
-        paddingInlineStart: '1.5rem',
+        paddingInlineStart: 3,
         borderColor: 'text.secondary',
-        m: '0.25rem 0',
+        mx: 0,
+        my: 0.5,
       }}
     />
   );

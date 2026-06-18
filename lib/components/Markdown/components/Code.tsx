@@ -42,8 +42,8 @@ export function Code({
       className={className}
       style={{
         backgroundColor: 'rgba(126, 125, 124, 0.1)',
-        borderRadius: '0.25rem',
-        padding: '0.25rem 0.5rem',
+        borderRadius: theme.shape.borderRadius,
+        padding: theme.spacing(0.5, 1),
         ...style,
       }}
     >
