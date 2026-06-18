@@ -1,16 +1,19 @@
 import type { CommonDashboardLayoutConfig } from '@/CommonDashboardLayoutConfig';
 import { CommonDashboardTileContainer } from '@/CommonDashboardTileContainer';
 import type { CommonDashboardTileNode } from '@/CommonDashboardTileNode';
-import type { TypographyProps } from '@/components/Typography';
-import Typography from '@/components/Typography';
+import Typography, { type TypographyProps } from '@/components/Typography';
+import { InlineDashboardTiles } from '@/InlineDashboardTiles';
 import TextSkeletonTile from '@/tiles/TextSkeletonTile';
-import type { DashboardLayoutConfig } from '@rotorjs/dashboard';
+import type {
+  DashboardLayoutConfig,
+  DashboardTileNode,
+} from '@rotorjs/dashboard';
 
 export type TextTileNode<
   Layout extends DashboardLayoutConfig = DashboardLayoutConfig,
 > = CommonDashboardTileNode<Layout> &
   Pick<TypographyProps, 'variant'> & {
-    content?: string;
+    content?: string | DashboardTileNode[];
   };
 
 export default function TextTile(props: TextTileNode) {
@@ -24,7 +27,11 @@ export default function TextTile(props: TextTileNode) {
   return (
     <CommonDashboardTileContainer layout={layout}>
       <Typography className={className} sx={style} variant={variant}>
-        {content}
+        {Array.isArray(content) ? (
+          <InlineDashboardTiles content={content} />
+        ) : (
+          content
+        )}
       </Typography>
     </CommonDashboardTileContainer>
   );

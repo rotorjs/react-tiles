@@ -7,6 +7,7 @@ import SkeletonTile from '@/tiles/SkeletonTile';
 import StackTile from '@/tiles/StackTile';
 import type { DashboardLayoutMap, DashboardTileMap } from '@rotorjs/react';
 import type { ComponentType } from 'react';
+import DividerTile from './tiles/DividerTile';
 import MarkdownTile from './tiles/MarkdownTile';
 import SpaceTile from './tiles/SpaceTile';
 import TextTile from './tiles/TextTile';
@@ -29,6 +30,7 @@ export const layoutTiles = {
 
 export const tiles = {
   ...layoutTiles,
+  divider: DividerTile,
   markdown: MarkdownTile,
   skeleton: SkeletonTile,
   space: SpaceTile,

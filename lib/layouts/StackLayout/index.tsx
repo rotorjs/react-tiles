@@ -1,10 +1,10 @@
 import type { CommonDashboardLayoutConfig } from '@/CommonDashboardLayoutConfig';
 import type { CommonDashboardLayoutNode } from '@/CommonDashboardLayoutNode';
+import { CommonTileContainer } from '@/CommonTileContainer';
 import { sxx } from '@/sxx';
 import Box from '@mui/material/Box';
 import { DashboardLayoutContext } from '@rotorjs/react';
 import { useMemo, type PropsWithChildren } from 'react';
-import { StackTileContainer } from './StackTileContainer';
 
 export type StackLayoutNode = CommonDashboardLayoutNode;
 
@@ -17,7 +17,7 @@ export default function StackLayout({
   children,
 }: PropsWithChildren<StackLayoutNode>) {
   const context = useMemo(
-    () => ({ type, tileContainer: StackTileContainer }),
+    () => ({ type, tileContainer: CommonTileContainer }),
     [type],
   );
 

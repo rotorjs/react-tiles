@@ -1,10 +1,10 @@
 import type { CommonDashboardLayoutConfig } from '@/CommonDashboardLayoutConfig';
 import type { CommonDashboardLayoutNode } from '@/CommonDashboardLayoutNode';
+import { CommonTileContainer } from '@/CommonTileContainer';
 import { sxx } from '@/sxx';
 import Box from '@mui/material/Box';
 import { DashboardLayoutContext } from '@rotorjs/react';
 import { useMemo, type PropsWithChildren } from 'react';
-import { GridTileContainer } from './GridTileContainer';
 
 export type GridLayoutNode = CommonDashboardLayoutNode;
 
@@ -17,7 +17,7 @@ export default function GridLayout({
   children,
 }: PropsWithChildren<GridLayoutNode>) {
   const context = useMemo(
-    () => ({ type, tileContainer: GridTileContainer }),
+    () => ({ type, tileContainer: CommonTileContainer }),
     [type],
   );
 

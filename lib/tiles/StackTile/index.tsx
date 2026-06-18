@@ -1,7 +1,7 @@
 import type { CommonDashboardLayoutConfig } from '@/CommonDashboardLayoutConfig';
 import { CommonDashboardTileContainer } from '@/CommonDashboardTileContainer';
 import type { CommonDashboardTileNode } from '@/CommonDashboardTileNode';
-import { StackTileContainer } from '@/layouts/StackLayout/StackTileContainer';
+import { CommonTileContainer } from '@/CommonTileContainer';
 import { sxx } from '@/sxx';
 import StackSkeletonTile from '@/tiles/StackSkeletonTile';
 import type {
@@ -22,7 +22,7 @@ export default function StackTile(props: StackTileNode) {
     props as StackTileNode<CommonDashboardLayoutConfig>;
 
   const context = useMemo(
-    () => ({ type, tileContainer: StackTileContainer }),
+    () => ({ type, tileContainer: CommonTileContainer }),
     [type],
   );
 

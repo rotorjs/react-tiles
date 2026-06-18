@@ -1,7 +1,7 @@
 import type { CommonDashboardLayoutConfig } from '@/CommonDashboardLayoutConfig';
 import { CommonDashboardTileContainer } from '@/CommonDashboardTileContainer';
 import type { CommonDashboardTileNode } from '@/CommonDashboardTileNode';
-import { GridTileContainer } from '@/layouts/GridLayout/GridTileContainer';
+import { CommonTileContainer } from '@/CommonTileContainer';
 import { sxx } from '@/sxx';
 import GridSkeletonTile from '@/tiles/GridSkeletonTile';
 import type {
@@ -22,7 +22,7 @@ export default function GridTile(props: GridTileNode) {
     props as GridTileNode<CommonDashboardLayoutConfig>;
 
   const context = useMemo(
-    () => ({ type, tileContainer: GridTileContainer }),
+    () => ({ type, tileContainer: CommonTileContainer }),
     [type],
   );
 

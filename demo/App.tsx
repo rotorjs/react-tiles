@@ -1,6 +1,8 @@
+import type { CommonDashboardLayoutConfig } from '@/CommonDashboardLayoutConfig';
 import type { GridLayoutConfig } from '@/layouts/GridLayout';
 import type { StackLayoutConfig } from '@/layouts/StackLayout';
 import { layouts, tiles } from '@/presets';
+import type { DividerTileNode } from '@/tiles/DividerTile';
 import type { GridTileNode } from '@/tiles/GridTile';
 import type { MarkdownTileNode } from '@/tiles/MarkdownTile';
 import type { SkeletonTileNode } from '@/tiles/SkeletonTile';
@@ -44,6 +46,15 @@ const layout: DashboardLayoutNode = {
 
 const content: DashboardTileNode[] = [
   {
+    type: 'divider',
+    content: [
+      {
+        type: 'text',
+        content: 'Text',
+      } satisfies TextTileNode<CommonDashboardLayoutConfig>,
+    ],
+  } satisfies DividerTileNode<GridLayoutConfig>,
+  {
     type: 'grid',
     style: {
       gridTemplateColumns: 'repeat(2, 1fr)',
@@ -56,7 +67,35 @@ const content: DashboardTileNode[] = [
   } satisfies GridTileNode<GridLayoutConfig>,
   {
     type: 'markdown',
-    content: '# Title\nSection',
+    content: `
+# Title
+
+Section
+
+---
+
+[Link](https://github.com/rotorjs)
+
+> Quote
+> with multiple lines.
+
+Inline \`code\`
+
+\`\`\`ts
+Block level code
+\`\`\`
+
+- unordered
+- list
+
+1. ordered
+2. list
+
+| A  | B  | C  |
+| -- | -- | -- |
+| 1  | 2  | 3  |
+| 4  | 5  | 6  |
+`,
   } satisfies MarkdownTileNode<GridLayoutConfig>,
   {
     type: 'skeleton',
