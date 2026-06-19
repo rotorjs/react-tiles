@@ -89,7 +89,7 @@ const content: DashboardTileNode[] = [
   } satisfies LinkTileNode,
   {
     type: 'markdown',
-    style: { overflow: 'auto' },
+    style: { color: 'secondary.dark' },
     content: `
 # Title
 
