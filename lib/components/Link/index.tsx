@@ -29,7 +29,7 @@ export type LinkProps = PropsWithChildren<{
     | 'textPrimary'
     | 'textSecondary'
     | 'textDisabled'
-    | string;
+    | (string & {});
   underline?: 'always' | 'hover' | 'none';
   variant?:
     | 'body1'

@@ -64,6 +64,7 @@ const content: DashboardTileNode[] = [
       {
         type: 'text',
         content: 'Text',
+        color: 'info',
       } satisfies TextTileNode<CommonDashboardLayoutConfig>,
     ],
   } satisfies DividerTileNode<GridLayoutConfig>,
