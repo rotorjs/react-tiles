@@ -8,6 +8,17 @@ export type TypographyProps = PropsWithChildren<{
   className?: string;
   style?: CSSProperties;
   sx?: SxProps<Theme>;
+  color?:
+    | 'primary'
+    | 'secondary'
+    | 'success'
+    | 'error'
+    | 'info'
+    | 'warning'
+    | 'textPrimary'
+    | 'textSecondary'
+    | 'textDisabled'
+    | string;
   variant?:
     | 'body1'
     | 'body2'
@@ -30,6 +41,7 @@ export default function Typography({
   className,
   style,
   sx,
+  color,
   variant,
   children,
 }: TypographyProps) {
@@ -40,6 +52,7 @@ export default function Typography({
       className={className}
       style={style}
       sx={sx}
+      color={color}
       variant={variant}
     >
       {children}

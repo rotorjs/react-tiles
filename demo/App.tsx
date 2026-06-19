@@ -3,8 +3,10 @@ import type { GridLayoutConfig } from '@/layouts/GridLayout';
 import type { StackLayoutConfig } from '@/layouts/StackLayout';
 import layouts from '@/presets/layouts';
 import tiles from '@/presets/tiles';
+import type { ActionTileNode } from '@/tiles/ActionTile';
 import type { DividerTileNode } from '@/tiles/DividerTile';
 import type { GridTileNode } from '@/tiles/GridTile';
+import type { LinkTileNode } from '@/tiles/LinkTile';
 import type { MarkdownTileNode } from '@/tiles/MarkdownTile';
 import type { SkeletonTileNode } from '@/tiles/SkeletonTile';
 import type { SpaceTileNode } from '@/tiles/SpaceTile';
@@ -20,6 +22,7 @@ import {
   DashboardEventTarget,
   type DashboardLayoutNode,
   type DashboardTileNode,
+  type VarDashboardAction,
 } from '@rotorjs/dashboard';
 import { Dashboard } from '@rotorjs/react';
 import './App.css';
@@ -47,6 +50,15 @@ const layout: DashboardLayoutNode = {
 
 const content: DashboardTileNode[] = [
   {
+    type: 'action',
+    action: {
+      type: 'var',
+      name: 'test',
+      exposed: true,
+      value: 'value',
+    } satisfies VarDashboardAction,
+  } satisfies ActionTileNode,
+  {
     type: 'divider',
     content: [
       {
@@ -66,6 +78,14 @@ const content: DashboardTileNode[] = [
       { type: 'space', layout: { appearance: 'outline' } },
     ],
   } satisfies GridTileNode<GridLayoutConfig>,
+  {
+    type: 'link',
+    style: { placeSelf: 'center stretch', textAlign: 'center' },
+    href: 'https://google.com',
+    content: 'Go to Google',
+    underline: 'hover',
+    color: 'warning',
+  } satisfies LinkTileNode,
   {
     type: 'markdown',
     style: { overflow: 'auto' },
@@ -151,6 +171,7 @@ export default function App() {
         tiles={tiles}
         layout={layout}
         content={content}
+        approveNavigation={() => true}
       />
     </ThemeProvider>
   );

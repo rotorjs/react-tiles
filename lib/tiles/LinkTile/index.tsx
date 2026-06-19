@@ -1,44 +1,57 @@
 import type { CommonDashboardLayoutConfig } from '@/CommonDashboardLayoutConfig';
 import { CommonDashboardTileContainer } from '@/CommonDashboardTileContainer';
 import type { CommonDashboardTileNode } from '@/CommonDashboardTileNode';
-import Typography, { type TypographyProps } from '@/components/Typography';
+import Link, { type LinkProps } from '@/components/Link';
 import { InlineDashboardTiles } from '@/InlineDashboardTiles';
-import TextSkeletonTile from '@/tiles/TextSkeletonTile';
+import LinkSkeletonTile from '@/tiles/LinkSkeletonTile';
 import type {
   DashboardLayoutConfig,
   DashboardTileNode,
 } from '@rotorjs/dashboard';
 
-export type TextTileNode<
+export type LinkTileNode<
   Layout extends DashboardLayoutConfig = DashboardLayoutConfig,
 > = CommonDashboardTileNode<Layout> &
-  Pick<TypographyProps, 'color' | 'variant'> & {
+  Pick<LinkProps, 'color' | 'underline' | 'variant' | 'href' | 'action'> & {
     content?: string | DashboardTileNode[];
   };
 
-export default function TextTile(props: TextTileNode) {
-  const { layout, className, style, loading, color, variant, content } =
-    props as TextTileNode<CommonDashboardLayoutConfig>;
+export default function LinkTile(props: LinkTileNode) {
+  const {
+    layout,
+    className,
+    style,
+    loading,
+    color,
+    underline,
+    variant,
+    href,
+    action,
+    content,
+  } = props as LinkTileNode<CommonDashboardLayoutConfig>;
 
   if (loading) {
-    return <TextSkeletonTile {...props} />;
+    return <LinkSkeletonTile {...props} />;
   }
 
   return (
     <CommonDashboardTileContainer layout={layout}>
-      <Typography
+      <Link
         className={className}
         sx={style}
         color={color}
+        underline={underline}
         variant={variant}
+        href={href}
+        action={action}
       >
         {Array.isArray(content) ? (
           <InlineDashboardTiles content={content} />
         ) : (
           content
         )}
-      </Typography>
+      </Link>
     </CommonDashboardTileContainer>
   );
 }
-TextTile.displayName = 'TextTile';
+LinkTile.displayName = 'LinkTile';
