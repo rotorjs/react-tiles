@@ -6,16 +6,13 @@ import tiles from '@/presets/tiles';
 import type { ActionTileNode } from '@/tiles/ActionTile';
 import type { DividerTileNode } from '@/tiles/DividerTile';
 import type { GridTileNode } from '@/tiles/GridTile';
+import type { IconTileNode } from '@/tiles/IconTile';
 import type { LinkTileNode } from '@/tiles/LinkTile';
 import type { MarkdownTileNode } from '@/tiles/MarkdownTile';
 import type { SkeletonTileNode } from '@/tiles/SkeletonTile';
 import type { SpaceTileNode } from '@/tiles/SpaceTile';
 import type { StackTileNode } from '@/tiles/StackTile';
 import type { TextTileNode } from '@/tiles/TextTile';
-import '@fontsource/roboto/300.css';
-import '@fontsource/roboto/400.css';
-import '@fontsource/roboto/500.css';
-import '@fontsource/roboto/700.css';
 import CssBaseline from '@mui/material/CssBaseline';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {
@@ -80,6 +77,12 @@ const content: DashboardTileNode[] = [
       { type: 'space', layout: { appearance: 'outline' } },
     ],
   } satisfies GridTileNode<GridLayoutConfig>,
+  {
+    type: 'icon',
+    style: { placeSelf: 'center' },
+    color: 'success',
+    name: 'check_circle',
+  } satisfies IconTileNode<GridLayoutConfig>,
   {
     type: 'link',
     style: { placeSelf: 'center stretch', textAlign: 'center' },

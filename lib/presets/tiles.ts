@@ -1,6 +1,7 @@
 import type { Tiles } from '@/presets';
 import ActionTile from '@/tiles/ActionTile';
 import DividerTile from '@/tiles/DividerTile';
+import IconTile from '@/tiles/IconTile';
 import LinkTile from '@/tiles/LinkTile';
 import MarkdownTile from '@/tiles/MarkdownTile';
 import SkeletonTile from '@/tiles/SkeletonTile';
@@ -12,6 +13,7 @@ const tiles = {
   ...layoutTiles,
   action: ActionTile,
   divider: DividerTile,
+  icon: IconTile,
   link: LinkTile,
   markdown: MarkdownTile,
   skeleton: SkeletonTile,
