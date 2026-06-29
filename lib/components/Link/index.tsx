@@ -1,16 +1,11 @@
+import { sxx } from '@/sxx';
 import MUILink from '@mui/material/Link';
 import type { SxProps, Theme } from '@mui/material/styles';
-import type {
-  DashboardAction,
-  NavigateDashboardAction,
-} from '@rotorjs/dashboard';
-import { useDashboardContext } from '@rotorjs/react';
 import {
   type CSSProperties,
   type ElementType,
   type PropsWithChildren,
   type Ref,
-  type SyntheticEvent,
 } from 'react';
 
 export type LinkProps = PropsWithChildren<{
@@ -46,7 +41,6 @@ export type LinkProps = PropsWithChildren<{
     | 'subtitle1'
     | 'subtitle2';
   href?: string;
-  action?: DashboardAction;
   onClick?: (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
 }>;
 
@@ -60,40 +54,21 @@ export default function Link({
   underline,
   variant,
   href,
-  action,
   onClick,
   children,
 }: LinkProps) {
-  const { target, approveUserAction } = useDashboardContext();
-
   return (
     <MUILink
       ref={ref}
       component={component!}
       className={className}
       style={style}
-      sx={sx}
+      sx={sxx(sx, !href && !onClick ? undefined : { cursor: 'pointer' })}
       color={color}
       underline={underline}
       variant={variant}
       href={href}
-      onClick={
-        onClick ??
-        (action || href
-          ? (event: SyntheticEvent) => {
-              event.preventDefault();
-
-              if (!action || approveUserAction(action))
-                target?.dispatchAction(
-                  action ??
-                    ({
-                      type: 'navigate',
-                      href: href ?? '',
-                    } satisfies NavigateDashboardAction),
-                );
-            }
-          : undefined)
-      }
+      onClick={onClick}
     >
       {children}
     </MUILink>

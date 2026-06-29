@@ -1,5 +1,4 @@
 import Divider from '@/components/Divider';
-import Link from '@/components/Link';
 import type { MdProps } from '@/components/Markdown/MdProps';
 import Typography from '@/components/Typography';
 import { type ComponentProps, type ElementType } from 'react';
@@ -13,13 +12,12 @@ import {
   TableHead,
   TableRow,
 } from './Table';
+import { Link } from './Link';
 
 // https://github.com/HPouyanmehr/mui-markdown/blob/main/package/src/core/utilities/helpers/overrides/index.ts
 
 export const defaultComponents: Record<string, ElementType> = {
-  a: ({ node: _, ...props }: MdProps<ComponentProps<'a'>>) => (
-    <Link {...props} />
-  ),
+  a: Link,
   blockquote: Blockquote,
   code: Code,
   h1: ({ node: _, ...props }: MdProps<ComponentProps<'h1'>>) => (

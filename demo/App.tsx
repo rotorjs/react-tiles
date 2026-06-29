@@ -22,6 +22,7 @@ import {
   DashboardEventTarget,
   type DashboardLayoutNode,
   type DashboardTileNode,
+  type NavigateDashboardAction,
   type VarDashboardAction,
 } from '@rotorjs/dashboard';
 import { Dashboard } from '@rotorjs/react';
@@ -83,6 +84,10 @@ const content: DashboardTileNode[] = [
     type: 'link',
     style: { placeSelf: 'center stretch', textAlign: 'center' },
     href: 'https://google.com',
+    onClick: {
+      type: 'navigate',
+      href: 'https://apple.com',
+    } satisfies NavigateDashboardAction,
     content: 'Go to Google',
     underline: 'hover',
     color: 'warning',
