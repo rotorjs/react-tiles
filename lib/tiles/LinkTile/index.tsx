@@ -3,7 +3,7 @@ import { CommonDashboardTileContainer } from '@/CommonDashboardTileContainer';
 import type { CommonDashboardTileNode } from '@/CommonDashboardTileNode';
 import Link, { type LinkProps } from '@/components/Link';
 import { InlineDashboardTiles } from '@/InlineDashboardTiles';
-import LinkSkeletonTile from '@/tiles/LinkSkeletonTile';
+import TextSkeletonTile from '@/tiles/TextSkeletonTile';
 import type {
   DashboardAction,
   DashboardLayoutConfig,
@@ -16,7 +16,7 @@ import type { SyntheticEvent } from 'react';
 export type LinkTileNode<
   Layout extends DashboardLayoutConfig = DashboardLayoutConfig,
 > = CommonDashboardTileNode<Layout> &
-  Pick<LinkProps, 'color' | 'underline' | 'variant' | 'href'> & {
+  Pick<LinkProps, 'color' | 'href' | 'underline' | 'variant'> & {
     onClick?: DashboardAction;
     content?: string | DashboardTileNode[];
   };
@@ -28,17 +28,17 @@ export default function LinkTile(props: LinkTileNode) {
     style,
     loading,
     color,
-    underline,
-    variant,
     href,
     onClick,
+    underline,
+    variant,
     content,
   } = props as LinkTileNode<CommonDashboardLayoutConfig>;
 
   const { target, approveUserAction } = useDashboardContext();
 
   if (loading) {
-    return <LinkSkeletonTile {...props} />;
+    return <TextSkeletonTile {...props} />;
   }
 
   return (
@@ -47,8 +47,6 @@ export default function LinkTile(props: LinkTileNode) {
         className={className}
         sx={style}
         color={color}
-        underline={underline}
-        variant={variant}
         href={href}
         onClick={
           !onClick && !href
@@ -66,6 +64,8 @@ export default function LinkTile(props: LinkTileNode) {
                   );
               }
         }
+        underline={underline}
+        variant={variant}
       >
         {Array.isArray(content) ? (
           <InlineDashboardTiles content={content} />

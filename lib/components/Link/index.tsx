@@ -23,8 +23,9 @@ export type LinkProps = PropsWithChildren<{
     | 'warning'
     | 'textPrimary'
     | 'textSecondary'
-    | 'textDisabled'
-    | (string & {});
+    | 'textDisabled';
+  href?: string;
+  onClick?: (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
   underline?: 'always' | 'hover' | 'none';
   variant?:
     | 'body1'
@@ -40,8 +41,6 @@ export type LinkProps = PropsWithChildren<{
     | 'overline'
     | 'subtitle1'
     | 'subtitle2';
-  href?: string;
-  onClick?: (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
 }>;
 
 export default function Link({
@@ -51,10 +50,10 @@ export default function Link({
   style,
   sx,
   color,
-  underline,
-  variant,
   href,
   onClick,
+  underline,
+  variant,
   children,
 }: LinkProps) {
   return (
@@ -65,10 +64,10 @@ export default function Link({
       style={style}
       sx={sxx(sx, !href && !onClick ? undefined : { cursor: 'pointer' })}
       color={color}
-      underline={underline}
-      variant={variant}
       href={href}
       onClick={onClick}
+      underline={underline}
+      variant={variant}
     >
       {children}
     </MUILink>

@@ -2,7 +2,7 @@ import type { CommonDashboardLayoutConfig } from '@/CommonDashboardLayoutConfig'
 import { CommonDashboardTileContainer } from '@/CommonDashboardTileContainer';
 import type { CommonDashboardTileNode } from '@/CommonDashboardTileNode';
 import { sxx } from '@/sxx';
-import SpaceSkeletonTile from '@/tiles/SpaceSkeletonTile';
+import BasicSkeletonTile from '@/tiles/BasicSkeletonTile';
 import type { DashboardLayoutConfig } from '@rotorjs/dashboard';
 
 export type SpaceTileNode<
@@ -14,7 +14,7 @@ export default function SpaceTile(props: SpaceTileNode) {
     props as SpaceTileNode<CommonDashboardLayoutConfig>;
 
   if (loading) {
-    return <SpaceSkeletonTile {...props} />;
+    return <BasicSkeletonTile {...props} />;
   }
 
   return (

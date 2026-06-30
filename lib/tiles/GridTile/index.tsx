@@ -3,7 +3,7 @@ import { CommonDashboardTileContainer } from '@/CommonDashboardTileContainer';
 import type { CommonDashboardTileNode } from '@/CommonDashboardTileNode';
 import { CommonTileContainer } from '@/CommonTileContainer';
 import { sxx } from '@/sxx';
-import GridSkeletonTile from '@/tiles/GridSkeletonTile';
+import BasicLayoutSkeletonTile from '@/tiles/BasicLayoutSkeletonTile';
 import type {
   DashboardLayoutConfig,
   DashboardTileNode,
@@ -27,7 +27,7 @@ export default function GridTile(props: GridTileNode) {
   );
 
   if (loading) {
-    return <GridSkeletonTile {...props} />;
+    return <BasicLayoutSkeletonTile {...props} />;
   }
 
   return (

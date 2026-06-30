@@ -4,6 +4,7 @@ import type { StackLayoutConfig } from '@/layouts/StackLayout';
 import layouts from '@/presets/layouts';
 import tiles from '@/presets/tiles';
 import type { ActionTileNode } from '@/tiles/ActionTile';
+import type { ButtonTileNode } from '@/tiles/ButtonTile';
 import type { DividerTileNode } from '@/tiles/DividerTile';
 import type { GridTileNode } from '@/tiles/GridTile';
 import type { IconTileNode } from '@/tiles/IconTile';
@@ -56,6 +57,20 @@ const content: DashboardTileNode[] = [
       value: 'value',
     } satisfies VarDashboardAction,
   } satisfies ActionTileNode,
+  {
+    type: 'button',
+    style: { placeSelf: 'center' },
+    content: 'Button',
+    variant: 'contained',
+    endIcon: { className: 'fa-search', iconSet: 'fas' },
+    startIcon: 'search',
+    onClick: {
+      type: 'navigate',
+      href: 'https://google.com',
+    } satisfies NavigateDashboardAction,
+    color: 'warning',
+    loadingPosition: 'end',
+  } satisfies ButtonTileNode,
   {
     type: 'divider',
     content: [

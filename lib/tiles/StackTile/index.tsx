@@ -3,7 +3,7 @@ import { CommonDashboardTileContainer } from '@/CommonDashboardTileContainer';
 import type { CommonDashboardTileNode } from '@/CommonDashboardTileNode';
 import { CommonTileContainer } from '@/CommonTileContainer';
 import { sxx } from '@/sxx';
-import StackSkeletonTile from '@/tiles/StackSkeletonTile';
+import BasicLayoutSkeletonTile from '@/tiles/BasicLayoutSkeletonTile';
 import type {
   DashboardLayoutConfig,
   DashboardTileNode,
@@ -27,7 +27,7 @@ export default function StackTile(props: StackTileNode) {
   );
 
   if (loading) {
-    return <StackSkeletonTile {...props} />;
+    return <BasicLayoutSkeletonTile {...props} />;
   }
 
   return (

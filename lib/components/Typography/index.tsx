@@ -17,8 +17,7 @@ export type TypographyProps = PropsWithChildren<{
     | 'warning'
     | 'textPrimary'
     | 'textSecondary'
-    | 'textDisabled'
-    | (string & {});
+    | 'textDisabled';
   variant?:
     | 'body1'
     | 'body2'

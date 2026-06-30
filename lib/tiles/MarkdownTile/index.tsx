@@ -3,7 +3,7 @@ import { CommonDashboardTileContainer } from '@/CommonDashboardTileContainer';
 import type { CommonDashboardTileNode } from '@/CommonDashboardTileNode';
 import Markdown from '@/components/Markdown';
 import { sxx } from '@/sxx';
-import MarkdownSkeletonTile from '@/tiles/MarkdownSkeletonTile';
+import BasicSkeletonTile from '@/tiles/BasicSkeletonTile';
 import type { DashboardLayoutConfig } from '@rotorjs/dashboard';
 
 export type MarkdownTileNode<
@@ -17,7 +17,7 @@ export default function MarkdownTile(props: MarkdownTileNode) {
     props as MarkdownTileNode<CommonDashboardLayoutConfig>;
 
   if (loading) {
-    return <MarkdownSkeletonTile {...props} />;
+    return <BasicSkeletonTile {...props} />;
   }
 
   return (

@@ -1,9 +1,9 @@
 import type { CommonDashboardLayoutConfig } from '@/CommonDashboardLayoutConfig';
 import { sxx } from '@/sxx';
+import SkeletonTile from '@/tiles/SkeletonTile';
 import type { TextTileNode } from '@/tiles/TextTile';
 import { useTheme } from '@mui/material/styles';
 import type { DashboardLayoutConfig } from '@rotorjs/dashboard';
-import SkeletonTile from '../SkeletonTile';
 
 export type TextSkeletonTileNode<
   Layout extends DashboardLayoutConfig = DashboardLayoutConfig,

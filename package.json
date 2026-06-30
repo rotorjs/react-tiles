@@ -53,6 +53,7 @@
     "@eslint/js": "^10.0.1",
     "@fontsource/material-icons": "^5.2.7",
     "@fontsource/roboto": "^5.2.10",
+    "@fortawesome/fontawesome-free": "^7.3.0",
     "@rotorjs/dashboard": "^0.7.2",
     "@rotorjs/react": "^0.14.2",
     "@types/node": "^26.0.1",

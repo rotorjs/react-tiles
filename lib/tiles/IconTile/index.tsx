@@ -3,8 +3,8 @@ import { CommonDashboardTileContainer } from '@/CommonDashboardTileContainer';
 import type { CommonDashboardTileNode } from '@/CommonDashboardTileNode';
 import type { IconProps } from '@/components/Icon';
 import Icon from '@/components/Icon';
+import BasicSkeletonTile from '@/tiles/BasicSkeletonTile';
 import type { DashboardLayoutConfig } from '@rotorjs/dashboard';
-import IconSkeletonTile from '../IconSkeletonTile';
 
 export type IconTileNode<
   Layout extends DashboardLayoutConfig = DashboardLayoutConfig,
@@ -16,7 +16,7 @@ export default function IconTile(props: IconTileNode) {
     props as IconTileNode<CommonDashboardLayoutConfig>;
 
   if (loading) {
-    return <IconSkeletonTile {...props} />;
+    return <BasicSkeletonTile {...props} />;
   }
 
   return (

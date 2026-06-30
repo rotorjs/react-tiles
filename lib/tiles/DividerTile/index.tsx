@@ -4,7 +4,7 @@ import type { CommonDashboardTileNode } from '@/CommonDashboardTileNode';
 import Divider, { type DividerProps } from '@/components/Divider';
 import { InlineDashboardTiles } from '@/InlineDashboardTiles';
 import { sxx } from '@/sxx';
-import DividerSkeletonTile from '@/tiles/DividerSkeletonTile';
+import BasicSkeletonTile from '@/tiles/BasicSkeletonTile';
 import type {
   DashboardLayoutConfig,
   DashboardTileNode,
@@ -30,7 +30,7 @@ export default function DividerTile(props: DividerTileNode) {
   } = props as DividerTileNode<CommonDashboardLayoutConfig>;
 
   if (loading) {
-    return <DividerSkeletonTile {...props} />;
+    return <BasicSkeletonTile {...props} />;
   }
 
   return (
