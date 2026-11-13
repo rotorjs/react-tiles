@@ -3,5 +3,5 @@
     "source.organizeImports": "explicit",
     "source.fixAll.eslint": "explicit"
   },
-  "typescript.preferences.autoImportSpecifierExcludeRegexes": ["^@mui/[^/]+$"]
+  "js/ts.preferences.autoImportSpecifierExcludeRegexes": ["^@mui/[^/]+$"]
 }
