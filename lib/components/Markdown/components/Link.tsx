@@ -13,7 +13,7 @@ export function Link({
 
   return (
     <LinkComponent
-      {...props}
+      {...(props as typeof props & { color: never })}
       href={href}
       onClick={
         !href
