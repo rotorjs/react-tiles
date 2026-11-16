@@ -6,6 +6,8 @@ import tiles from '@/presets/tiles';
 import type { ActionTileNode } from '@/tiles/ActionTile';
 import type { ButtonTileNode } from '@/tiles/ButtonTile';
 import type { DividerTileNode } from '@/tiles/DividerTile';
+import type { DumpTileNode } from '@/tiles/DumpTile';
+import type { ErrorTileNode } from '@/tiles/ErrorTile';
 import type { GridTileNode } from '@/tiles/GridTile';
 import type { IconButtonTileNode } from '@/tiles/IconButtonTile';
 import type { IconTileNode } from '@/tiles/IconTile';
@@ -82,6 +84,16 @@ const content: DashboardTileNode[] = [
       } satisfies TextTileNode<CommonDashboardLayoutConfig>,
     ],
   } satisfies DividerTileNode<GridLayoutConfig>,
+  {
+    type: 'dump',
+    some: 'thing',
+  } satisfies DumpTileNode<GridLayoutConfig>,
+  {
+    type: 'error',
+    error: new Error(
+      'Something went really wrong, like, reeeeeeaally really wrong. So maybe we should just ignore it and go home.',
+    ),
+  } satisfies ErrorTileNode<GridLayoutConfig>,
   {
     type: 'grid',
     style: {
