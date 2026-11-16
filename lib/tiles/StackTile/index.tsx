@@ -1,0 +1,49 @@
+import type { CommonDashboardLayoutConfig } from '@/CommonDashboardLayoutConfig';
+import { CommonDashboardTileContainer } from '@/CommonDashboardTileContainer';
+import type { CommonDashboardTileNode } from '@/CommonDashboardTileNode';
+import { CommonTileContainer } from '@/CommonTileContainer';
+import { sxx } from '@/sxx';
+import BasicLayoutSkeletonTile from '@/tiles/BasicLayoutSkeletonTile';
+import type {
+  DashboardLayoutConfig,
+  DashboardTileNode,
+} from '@rotorjs/dashboard';
+import { DashboardLayoutContext, DashboardTiles } from '@rotorjs/react';
+import { useMemo } from 'react';
+
+export type StackTileNode<
+  Layout extends DashboardLayoutConfig = DashboardLayoutConfig,
+> = CommonDashboardTileNode<Layout> & {
+  content?: DashboardTileNode[];
+};
+
+export default function StackTile(props: StackTileNode) {
+  const { type, layout, className, style, loading, content } =
+    props as StackTileNode<CommonDashboardLayoutConfig>;
+
+  const context = useMemo(
+    () => ({ type, tileContainer: CommonTileContainer }),
+    [type],
+  );
+
+  if (loading) {
+    return <BasicLayoutSkeletonTile {...props} />;
+  }
+
+  return (
+    <CommonDashboardTileContainer
+      className={className}
+      sx={sxx(
+        { display: 'flex', flexDirection: 'column', gap: 'inherit' },
+        style,
+      )}
+      layout={layout}
+      defaultAppearance="space"
+    >
+      <DashboardLayoutContext.Provider value={context}>
+        {!content?.length ? null : <DashboardTiles content={content} />}
+      </DashboardLayoutContext.Provider>
+    </CommonDashboardTileContainer>
+  );
+}
+StackTile.displayName = 'StackTile';

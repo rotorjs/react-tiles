@@ -1,16 +1,16 @@
 {
-  "name": "@rotorjs/react-base",
-  "version": "0.0.0",
+  "name": "@rotorjs/react-tiles",
+  "version": "0.1.0",
   "description": "Rotor",
   "author": {
     "name": "Aaron Burmeister"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rotorjs/react-base.git"
+    "url": "git+https://github.com/rotorjs/react-tiles.git"
   },
   "bugs": {
-    "url": "https://github.com/rotorjs/react-base/issues"
+    "url": "https://github.com/rotorjs/react-tiles/issues"
   },
   "homepage": "https://github.com/rotorjs/",
   "type": "module",
@@ -22,13 +22,20 @@
   "files": [
     "dist"
   ],
-  "main": "./dist/main.js",
-  "types": "./dist/main.d.ts",
+  "types": "./dist/types/main.d.ts",
+  "main": "./dist/esm/main.js",
   "exports": {
     ".": {
       "import": {
-        "types": "./dist/main.d.ts",
-        "default": "./dist/main.js"
+        "types": "./dist/types/main.d.ts",
+        "default": "./dist/esm/main.js"
+      }
+    },
+    "./main": null,
+    "./*": {
+      "import": {
+        "types": "./dist/types/*.d.ts",
+        "default": "./dist/esm/*.js"
       }
     }
   },
@@ -44,23 +51,44 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@types/react": "^19.1.12",
-    "@types/react-dom": "^19.1.9",
-    "@vitejs/plugin-react": "^6.0.1",
-    "eslint": "^10.3.0",
+    "@fontsource/material-icons": "^5.3.0",
+    "@fontsource/roboto": "^5.3.0",
+    "@fortawesome/fontawesome-free": "^7.3.1",
+    "@rotorjs/dashboard": "^0.7.3",
+    "@rotorjs/react": "^0.15.0",
+    "@types/node": "^26.6.6",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.3.0",
+    "eslint": "^10.15.0",
     "eslint-config-prettier": "^10.1.8",
-    "eslint-import-resolver-typescript": "^4.4.4",
-    "eslint-plugin-import-x": "^4.16.2",
-    "eslint-plugin-prettier": "^5.5.4",
+    "eslint-import-resolver-typescript": "^4.4.5",
+    "eslint-plugin-import-x": "^4.18.1",
+    "eslint-plugin-prettier": "^5.5.7",
     "eslint-plugin-react-hooks": "^7.1.1",
-    "eslint-plugin-react-refresh": "^0.5.2",
-    "globals": "^17.6.0",
-    "prettier": "^3.8.3",
-    "react": "^19.2.6",
-    "react-dom": "^19.2.6",
+    "eslint-plugin-react-refresh": "^0.5.8",
+    "globals": "^17.14.0",
+    "prettier": "^3.10.1",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
     "typescript": "^6.0.3",
-    "typescript-eslint": "^8.59.3",
-    "unplugin-dts": "^1.0.0",
-    "vite": "^8.0.12"
+    "typescript-eslint": "^8.72.2",
+    "unplugin-dts": "^1.1.2",
+    "vite": "^8.3.8"
+  },
+  "peerDependencies": {
+    "@rotorjs/dashboard": "^0.7.1",
+    "@rotorjs/react": "^0.15.0",
+    "react": "^19.0.0"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/material": "^9.5.0",
+    "@types/react-syntax-highlighter": "^15.5.13",
+    "clsx": "^2.1.1",
+    "react-markdown": "^10.1.0",
+    "react-syntax-highlighter": "^16.1.2",
+    "remark-gfm": "^4.0.1"
   }
 }
