@@ -45,12 +45,12 @@ export default function Button({
   endIcon,
   fluid,
   href,
-  startIcon,
   loading,
   loadingPosition,
+  size,
+  startIcon,
   variant,
   onClick,
-  size,
   children,
 }: ButtonProps) {
   return (
@@ -65,12 +65,12 @@ export default function Button({
       endIcon={endIcon}
       fullWidth={fluid}
       href={href}
-      startIcon={startIcon}
       loading={loading}
       loadingPosition={loadingPosition}
+      size={size}
+      startIcon={startIcon}
       variant={variant}
       onClick={onClick}
-      size={size}
     >
       {children}
     </MUIButton>

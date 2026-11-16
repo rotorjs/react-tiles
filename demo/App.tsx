@@ -7,6 +7,7 @@ import type { ActionTileNode } from '@/tiles/ActionTile';
 import type { ButtonTileNode } from '@/tiles/ButtonTile';
 import type { DividerTileNode } from '@/tiles/DividerTile';
 import type { GridTileNode } from '@/tiles/GridTile';
+import type { IconButtonTileNode } from '@/tiles/IconButtonTile';
 import type { IconTileNode } from '@/tiles/IconTile';
 import type { LinkTileNode } from '@/tiles/LinkTile';
 import type { MarkdownTileNode } from '@/tiles/MarkdownTile';
@@ -92,6 +93,13 @@ const content: DashboardTileNode[] = [
       { type: 'space', layout: { appearance: 'outline' } },
     ],
   } satisfies GridTileNode<GridLayoutConfig>,
+  {
+    type: 'icon-button',
+    style: { placeSelf: 'center' },
+    color: 'error',
+    icon: 'check_circle',
+    href: 'https://google.com',
+  } satisfies IconButtonTileNode<GridLayoutConfig>,
   {
     type: 'icon',
     style: { placeSelf: 'center' },
