@@ -20,37 +20,41 @@ export const defaultComponents: Record<string, ElementType> = {
   a: Link,
   blockquote: Blockquote,
   code: Code,
-  h1: ({ node: _, ...props }: MdProps<ComponentProps<'h1'>>) => (
+  h1: ({ node: _node, ...props }: MdProps<ComponentProps<'h1'>>) => (
     <Typography {...(props as typeof props & { color: never })} variant="h1" />
   ),
-  h2: ({ node: _, ...props }: MdProps<ComponentProps<'h2'>>) => (
+  h2: ({ node: _node, ...props }: MdProps<ComponentProps<'h2'>>) => (
     <Typography {...(props as typeof props & { color: never })} variant="h2" />
   ),
-  h3: ({ node: _, ...props }: MdProps<ComponentProps<'h3'>>) => (
+  h3: ({ node: _node, ...props }: MdProps<ComponentProps<'h3'>>) => (
     <Typography {...(props as typeof props & { color: never })} variant="h3" />
   ),
-  h4: ({ node: _, ...props }: MdProps<ComponentProps<'h4'>>) => (
+  h4: ({ node: _node, ...props }: MdProps<ComponentProps<'h4'>>) => (
     <Typography {...(props as typeof props & { color: never })} variant="h4" />
   ),
-  h5: ({ node: _, ...props }: MdProps<ComponentProps<'h5'>>) => (
+  h5: ({ node: _node, ...props }: MdProps<ComponentProps<'h5'>>) => (
     <Typography {...(props as typeof props & { color: never })} variant="h5" />
   ),
-  h6: ({ node: _, ...props }: MdProps<ComponentProps<'h6'>>) => (
+  h6: ({ node: _node, ...props }: MdProps<ComponentProps<'h6'>>) => (
     <Typography {...(props as typeof props & { color: never })} variant="h6" />
   ),
-  hr: ({ node: _, ...props }: MdProps<ComponentProps<'hr'>>) => (
+  hr: ({ node: _node, ...props }: MdProps<ComponentProps<'hr'>>) => (
     <Divider {...props} />
   ),
-  ol: ({ node: _, ...props }: MdProps<ComponentProps<'ol'>>) => (
+  ol: ({ node: _node, ...props }: MdProps<ComponentProps<'ol'>>) => (
     <Typography
       {...(props as typeof props & { color: never })}
       component="ol"
     />
   ),
-  p: ({ node: _, ...props }: MdProps<ComponentProps<'p'>>) => (
+  p: ({ node: _node, ...props }: MdProps<ComponentProps<'p'>>) => (
     <Typography {...(props as typeof props & { color: never })} />
   ),
-  pre: ({ node: _, children, ...props }: MdProps<ComponentProps<'pre'>>) => (
+  pre: ({
+    node: _node,
+    children,
+    ...props
+  }: MdProps<ComponentProps<'pre'>>) => (
     <Typography
       {...(props as typeof props & { color: never })}
       component="pre"
@@ -59,7 +63,7 @@ export const defaultComponents: Record<string, ElementType> = {
       {children}
     </Typography>
   ),
-  span: ({ node: _, ...props }: MdProps<ComponentProps<'span'>>) => (
+  span: ({ node: _node, ...props }: MdProps<ComponentProps<'span'>>) => (
     <Typography
       {...(props as typeof props & { color: never })}
       component="span"
@@ -72,7 +76,7 @@ export const defaultComponents: Record<string, ElementType> = {
   th: TableCell,
   thead: TableHead,
   tr: TableRow,
-  ul: ({ node: _, ...props }: MdProps<ComponentProps<'ul'>>) => (
+  ul: ({ node: _node, ...props }: MdProps<ComponentProps<'ul'>>) => (
     <Typography
       {...(props as typeof props & { color: never })}
       component="ul"

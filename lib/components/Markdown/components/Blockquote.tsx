@@ -3,7 +3,7 @@ import Typography from '@mui/material/Typography';
 import type { ComponentProps } from 'react';
 
 export function Blockquote({
-  node: _,
+  node: _node,
   ...props
 }: MdProps<ComponentProps<'blockquote'>>) {
   return (

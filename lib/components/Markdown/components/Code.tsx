@@ -11,7 +11,7 @@ import {
 } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 export function Code({
-  node: _,
+  node: _node,
   className,
   style,
   children,

@@ -5,7 +5,7 @@ import { useDashboardContext } from '@rotorjs/react';
 import type { ComponentProps, SyntheticEvent } from 'react';
 
 export function Link({
-  node: _,
+  node: _node,
   href,
   ...props
 }: MdProps<ComponentProps<'a'>>) {
