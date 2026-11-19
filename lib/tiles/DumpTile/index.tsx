@@ -1,6 +1,7 @@
 import type { CommonDashboardLayoutConfig } from '@/CommonDashboardLayoutConfig';
 import { CommonDashboardTileContainer } from '@/CommonDashboardTileContainer';
 import type { CommonDashboardTileNode } from '@/CommonDashboardTileNode';
+import JsonView from '@/components/JsonView';
 import type { DashboardLayoutConfig } from '@rotorjs/dashboard';
 
 export type DumpTileNode<
@@ -9,10 +10,16 @@ export type DumpTileNode<
 
 export default function DumpTile(props: DumpTileNode) {
   const {
-    type: _,
+    type: _type,
     layout,
     ...rest
   } = props as DumpTileNode<CommonDashboardLayoutConfig>;
+
+  const dump = Object.fromEntries(
+    Object.entries({ layout, ...rest }).filter(
+      ([, value]) => value !== undefined,
+    ),
+  );
 
   return (
     <CommonDashboardTileContainer
@@ -29,9 +36,7 @@ export default function DumpTile(props: DumpTileNode) {
       layout={layout}
       defaultAppearance="outline"
     >
-      <pre style={{ marginBlock: 'unset' }}>
-        {JSON.stringify({ layout, ...rest }, null, 2)}
-      </pre>
+      <JsonView value={dump} />
     </CommonDashboardTileContainer>
   );
 }

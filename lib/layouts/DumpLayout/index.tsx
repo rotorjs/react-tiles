@@ -1,5 +1,6 @@
 import type { CommonDashboardLayoutNode } from '@/CommonDashboardLayoutNode';
 import Container from '@/components/Container';
+import JsonView from '@/components/JsonView';
 import { sxx } from '@/sxx';
 import type { PropsWithChildren } from 'react';
 
@@ -13,6 +14,12 @@ export default function DumpLayout({
   children: _children,
   ...rest
 }: PropsWithChildren<DumpLayoutNode>) {
+  const dump = Object.fromEntries(
+    Object.entries({ className, style, ...rest }).filter(
+      ([, value]) => value !== undefined,
+    ),
+  );
+
   return (
     <Container
       className={className}
@@ -32,9 +39,7 @@ export default function DumpLayout({
       )}
       appearance="outline"
     >
-      <pre style={{ marginBlock: 'unset' }}>
-        {JSON.stringify({ className, style, ...rest }, null, 2)}
-      </pre>
+      <JsonView value={dump} />
     </Container>
   );
 }

@@ -8,7 +8,10 @@ import MUITableHead from '@mui/material/TableHead';
 import MUITableRow from '@mui/material/TableRow';
 import type { ComponentProps } from 'react';
 
-export function Table({ node: _, ...props }: MdProps<ComponentProps<'table'>>) {
+export function Table({
+  node: _node,
+  ...props
+}: MdProps<ComponentProps<'table'>>) {
   return (
     <Box sx={{ overflow: 'auto' }}>
       <Box sx={{ width: '100%', display: 'table', tableLayout: 'fixed' }}>
@@ -19,14 +22,14 @@ export function Table({ node: _, ...props }: MdProps<ComponentProps<'table'>>) {
 }
 
 export function TableBody({
-  node: _,
+  node: _node,
   ...props
 }: MdProps<ComponentProps<'tbody'>>) {
   return <MUITableBody {...props} />;
 }
 
 export function TableCell({
-  node: _,
+  node: _node,
   ...props
 }: MdProps<ComponentProps<'td' | 'th'>>) {
   return (
@@ -38,19 +41,22 @@ export function TableCell({
 }
 
 export function TableFooter({
-  node: _,
+  node: _node,
   ...props
 }: MdProps<ComponentProps<'tfoot'>>) {
   return <MUITableFooter {...props} />;
 }
 
 export function TableHead({
-  node: _,
+  node: _node,
   ...props
 }: MdProps<ComponentProps<'thead'>>) {
   return <MUITableHead {...props} />;
 }
 
-export function TableRow({ node: _, ...props }: MdProps<ComponentProps<'tr'>>) {
+export function TableRow({
+  node: _node,
+  ...props
+}: MdProps<ComponentProps<'tr'>>) {
   return <MUITableRow {...props} />;
 }
