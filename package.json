@@ -84,7 +84,7 @@
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
-    "@mui/material": "^9.5.0",
+    "@mui/material": "^9.6.0",
     "@types/react-syntax-highlighter": "^15.5.13",
     "@uiw/react-json-view": "^2.0.0-alpha.46",
     "clsx": "^2.1.1",
