@@ -5,6 +5,7 @@ import type { ButtonProps } from '@/components/Button';
 import Button from '@/components/Button';
 import Icon from '@/components/Icon';
 import { InlineDashboardTiles } from '@/InlineDashboardTiles';
+import type { IconTileNode } from '@/tiles/IconTile';
 import type {
   DashboardAction,
   DashboardLayoutConfig,
@@ -13,7 +14,6 @@ import type {
 } from '@rotorjs/dashboard';
 import { useDashboardContext } from '@rotorjs/react';
 import type { SyntheticEvent } from 'react';
-import type { IconTileNode } from '../IconTile';
 
 export type ButtonTileNode<
   Layout extends DashboardLayoutConfig = DashboardLayoutConfig,

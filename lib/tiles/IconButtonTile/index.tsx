@@ -4,6 +4,7 @@ import type { CommonDashboardTileNode } from '@/CommonDashboardTileNode';
 import Icon from '@/components/Icon';
 import type { IconButtonProps } from '@/components/IconButton';
 import IconButton from '@/components/IconButton';
+import type { IconTileNode } from '@/tiles/IconTile';
 import type {
   DashboardAction,
   DashboardLayoutConfig,
@@ -11,7 +12,6 @@ import type {
 } from '@rotorjs/dashboard';
 import { useDashboardContext } from '@rotorjs/react';
 import type { SyntheticEvent } from 'react';
-import type { IconTileNode } from '../IconTile';
 
 export type IconButtonTileNode<
   Layout extends DashboardLayoutConfig = DashboardLayoutConfig,

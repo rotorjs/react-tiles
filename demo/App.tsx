@@ -4,6 +4,7 @@ import type { StackLayoutConfig } from '@/layouts/StackLayout';
 import layouts from '@/presets/layouts';
 import tiles from '@/presets/tiles';
 import type { ActionTileNode } from '@/tiles/ActionTile';
+import type { AvatarTileNode } from '@/tiles/AvatarTile';
 import type { ButtonTileNode } from '@/tiles/ButtonTile';
 import type { DividerTileNode } from '@/tiles/DividerTile';
 import type { DumpTileNode } from '@/tiles/DumpTile';
@@ -11,6 +12,7 @@ import type { ErrorTileNode } from '@/tiles/ErrorTile';
 import type { GridTileNode } from '@/tiles/GridTile';
 import type { IconButtonTileNode } from '@/tiles/IconButtonTile';
 import type { IconTileNode } from '@/tiles/IconTile';
+import type { ImageTileNode } from '@/tiles/ImageTile';
 import type { LinkTileNode } from '@/tiles/LinkTile';
 import type { MarkdownTileNode } from '@/tiles/MarkdownTile';
 import type { SkeletonTileNode } from '@/tiles/SkeletonTile';
@@ -60,6 +62,11 @@ const content: DashboardTileNode[] = [
       value: 'value',
     } satisfies VarDashboardAction,
   } satisfies ActionTileNode,
+  {
+    type: 'avatar',
+    style: { placeSelf: 'center' },
+    content: 'R',
+  } satisfies AvatarTileNode,
   {
     type: 'button',
     style: { placeSelf: 'center' },
@@ -118,6 +125,12 @@ const content: DashboardTileNode[] = [
     color: 'success',
     name: 'check_circle',
   } satisfies IconTileNode<GridLayoutConfig>,
+  {
+    type: 'image',
+    style: { placeSelf: 'center' },
+    src: 'https://files.midgar.city/themes/opencloud/assets/favicon.svg',
+    width: 32,
+  } satisfies ImageTileNode,
   {
     type: 'link',
     style: { placeSelf: 'center stretch', textAlign: 'center' },

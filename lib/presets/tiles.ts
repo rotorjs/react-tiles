@@ -1,11 +1,13 @@
 import type { Tiles } from '@/presets';
 import ActionTile from '@/tiles/ActionTile';
+import AvatarTile from '@/tiles/AvatarTile';
 import ButtonTile from '@/tiles/ButtonTile';
 import DividerTile from '@/tiles/DividerTile';
 import DumpTile from '@/tiles/DumpTile';
 import ErrorTile from '@/tiles/ErrorTile';
 import IconButtonTile from '@/tiles/IconButtonTile';
 import IconTile from '@/tiles/IconTile';
+import ImageTile from '@/tiles/ImageTile';
 import LinkTile from '@/tiles/LinkTile';
 import MarkdownTile from '@/tiles/MarkdownTile';
 import SkeletonTile from '@/tiles/SkeletonTile';
@@ -16,12 +18,14 @@ import layoutTiles from './layoutTiles';
 const tiles = {
   ...layoutTiles,
   action: ActionTile,
+  avatar: AvatarTile,
   button: ButtonTile,
   divider: DividerTile,
   dump: DumpTile,
   error: ErrorTile,
   'icon-button': IconButtonTile,
   icon: IconTile,
+  image: ImageTile,
   link: LinkTile,
   markdown: MarkdownTile,
   skeleton: SkeletonTile,
